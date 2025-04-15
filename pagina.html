@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home - Xbox Series X</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  
+</head>
+<body class="xbox-bg">
+  <div class="d-flex">
+    <nav class="sidebar d-flex flex-column flex-shrink-0 position-fixed">
+      <div class="p-4">
+        <h4 class="logo-text fw-bold mb-0">Xbox Series X</h4>
+        <p class="text-muted small hide-on-collapse">best console on earth</p>
+      </div>
+
+      <div class="nav flex-column">
+        <a href="pagina.html" class="sidebar-link active text-decoration-none p-3">
+          <img src="/img.png" alt="Logo" width="27" height="20" />
+          <span class="hide-on-collapse">Home</span>
+        </a>
+        <a href="console.html" class="sidebar-link text-decoration-none p-3">
+          <img src="/conso.png" alt="Logo" width="30" height="30" />
+          <span class="hide-on-collapse">Console</span>
+        </a>
+        <a href="abbonamenti.html" class="sidebar-link text-decoration-none p-3">
+          <img src="/abb.png" alt="Logo" width="30" height="30" />
+          <span class="hide-on-collapse">Abbonamenti</span>
+        </a>
+        <a href="#" class="sidebar-link text-decoration-none p-3" id="authLink">
+          <i class="fas me-3" id="authIcon"></i>
+          <span class="hide-on-collapse" id="authText">Accedi</span>
+        </a>
+      </div>
+
+      <div class="profile-section mt-auto p-4">
+        <div class="d-flex align-items-center">
+          <img src="https://img.freepik.com/vettori-premium/icona-predefinita-del-profilo-dell-avatar-immagine-dell-utente-dei-social-media-icona-dell-avatar-grigio-silhouette-del-profilo-vuoto-illustrazione-vettoriale_561158-3383.jpg" style="height:60px" class="rounded-circle" alt="Profile" />
+          <div class="ms-3 profile-info">
+            <h6 id="profileName" class="text-white mb-0">User</h6>
+            <small class="text-muted">User</small>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="content" style="margin-left:250px; width: calc(100% - 250px); padding: 2rem;">
+      <h2 class="text-center xbox-title mb-3">
+        <i class="bi bi-xbox me-2"></i> Benvenuto nella <span class="highlight-green">Home</span>!
+      </h2>
+      
+      <p class="lead text-center text-white fs-5">
+        Effettua l'accesso se non l'hai ancora fatto! <span class="highlight-green">Esplora il mondo Xbox.</span>
+      </p>
+      <hr class="border-success opacity-50 mx-auto" style="width: 200px;">
+
+
+      <!-- Expanding Cards -->
+      <div class="expanding-container mt-5">
+        <div class="panel active" style="background-image: url('https://i-ch.ch/wp-content/uploads/2024/02/Xbox-Series-X_16x9_02_NoText-351.jpg.webp')">
+         
+        
+
+          <h3>
+            XBOX SERIES X</h3>
+        </div>
+        <div class="panel" style="background-image: url('https://www.tomshw.it/storage/media/2024/12/44827/xbox-series-x-controller-82397.webp')">
+          <h3>CONTROLLER</h3>
+        </div>
+        <div class="panel" style="background-image: url('https://www.gamesoul.it/wp-content/uploads/2024/08/xbox-series-x-s-robot-white-gamestop-gamesoul.jpg')">
+          <h3>SERIES X E S</h3>
+        </div>
+        <div class="panel" style="background-image: url('https://static.mondoxbox.com/shotsnw/153/153208.jpg')">
+          <h3>HOME PAGE</h3>
+        </div>
+        <div class="panel" style="background-image: url('https://assets.xboxservices.com/assets/b6/c4/b6c485de-08fd-44e0-a4a7-15f27dc67305.jpg?n=963351_GLP-Page-Hero-1084_1920x1080_01.jpg')">
+          <h3>NBA2K25 NEW GEN per XBOX X e S</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const user = localStorage.getItem("xboxUser");
+    const profileName = document.getElementById("profileName");
+    const authLink = document.getElementById("authLink");
+    const authText = document.getElementById("authText");
+    const authIcon = document.getElementById("authIcon");
+
+    if (user && user !== "Ospite") {
+      profileName.textContent = user;
+      authText.textContent = "Logout";
+      authIcon.className = "fas fa-sign-out-alt";
+      authLink.onclick = () => {
+        localStorage.removeItem("xboxUser");
+        window.location.href = "index.html";
+      };
+    } else {
+      profileName.textContent = "Ospite";
+      authText.textContent = "Accedi";
+      authIcon.className = "fas fa-sign-in-alt";
+      authLink.href = "index.html";
+    }
+  </script>
+  <script src="/stile.js"></script>
+
+</body>
+
+</html>

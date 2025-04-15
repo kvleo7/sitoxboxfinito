@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="xbox-bg">
+
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+        <div class="row justify-content-center mt-5"></div>
+        <div class="row justify-content-center mt-2"></div>
+        
+        <div class="card xbox-card text-white">
+          <div class="card-header bg-dark border-bottom border-success">
+            <h4 class="mb-0 text-xbox">Login Xbox</h4>
+          </div>
+          <div class="card-body">
+            <form id="loginForm">
+              <div class="mb-3">
+                <label for="username" class="form-label">Nome utente</label>
+                <input type="text" class="form-control xbox-input" id="username" placeholder="Inserisci il tuo nome utente" required />
+              </div>
+              <button type="submit" class="btn btn-xbox w-100">Accedi</button>
+            </form>
+
+            <hr class="my-4 border-success" />
+
+            <div class="text-center">
+              <button id="skipBtn" class="btn btn-xbox-outline w-100">Salta login</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scritta Xbox grande sotto -->
+        <div class="text-center mt-5">
+          <h1 class="display-4 text-xbox fw-bold">XBOX</h1>
+          <div class="text-center mt-5"></div>
+          
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Xbox_one_logo.svg/2048px-Xbox_one_logo.svg.png" alt="Xbox Logo" style="max-width: 250px;">
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Suono Xbox -->
+  <audio id="startupSound" src="/xbox-sound.mp3" preload="auto"></audio>
+
+  <script>
+    // Carica il suono di avvio
+    const startupSound = document.getElementById("startupSound");
+
+    // Gestione login
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value.trim();
+      if (username) {
+        localStorage.setItem("xboxUser", username);
+
+        // Suono di avvio
+        startupSound.play().then(() => {
+          window.location.href = "pagina.html";
+        }).catch((error) => {
+          console.error("Impossibile riprodurre il suono:", error);
+          window.location.href = "pagina.html";
+        });
+      }
+    });
+
+    // Pulsante Salta login
+    document.getElementById("skipBtn").addEventListener("click", function () {
+      localStorage.setItem("xboxUser", "Ospite");
+
+      startupSound.play().then(() => {
+        window.location.href = "pagina.html";
+      }).catch((error) => {
+        console.error("Impossibile riprodurre il suono:", error);
+        window.location.href = "pagina.html";
+      });
+    });
+  </script>
+</body>
+</html>
